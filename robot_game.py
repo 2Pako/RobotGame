@@ -42,14 +42,14 @@ class RobotGame:
         """Respods to a keypress"""
         if event.key == pygame.K_RIGHT:
                 self.robot.moving_right = True
-        elif event.key == pygame.K_LEFT:
+        if event.key == pygame.K_LEFT:
                 self.robot.moving_left = True
-        elif event.key == pygame.K_UP:
+        if event.key == pygame.K_UP:
                 self.robot.moving_up = True
-        elif event.key == pygame.K_DOWN:
+        if event.key == pygame.K_DOWN:
                 self.robot.moving_down = True
-        elif event.key == pygame.K_q:
-            sys.exit()
+        if event.key == pygame.K_q:
+                sys.exit()
 
     
     def _check_keyup_events(self, event):

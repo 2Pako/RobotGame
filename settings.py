@@ -11,6 +11,6 @@ class Settings:
         self.screen_height = 800
         self.bg_color = (80,80,80)
         #ship settings
-        self.ship_speed = .3
+        self.robot_speed = .2
 
 
