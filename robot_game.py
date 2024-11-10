@@ -2,6 +2,7 @@ import sys
 import pygame
 from settings import Settings
 from robot import Robot
+from enemy import BadRobot
 
 class RobotGame:
     # Game class
@@ -12,8 +13,9 @@ class RobotGame:
         #screen 
         self.screen = pygame.display.set_mode([self.settings.screen_width,self.settings.screen_height])
         pygame.display.set_caption("RobotGame")
-        #Robot
+        #instance of Robot
         self.robot = Robot(self)
+        self.enemy = BadRobot(self)
 
     def run_game(self):
         """Start the main loop or the game"""
@@ -61,8 +63,11 @@ class RobotGame:
 
     def _update_screen(self):
         """Redraw the screen during each pass"""
-        self.screen.fill(self.settings.bg_color)        
+        self.screen.fill(self.settings.bg_color)
+        #load robot
         self.robot.blitme()
+        #load bad robot
+        self.enemy.blitme()
         # Make the most recent screen visible
         pygame.display.flip()
 
