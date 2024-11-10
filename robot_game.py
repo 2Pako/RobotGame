@@ -15,7 +15,6 @@ class RobotGame:
         #Robot
         self.robot = Robot(self)
 
-
     def run_game(self):
         """Start the main loop or the game"""
         while True:
@@ -25,7 +24,6 @@ class RobotGame:
             self.robot.update()
             #Redraw the screen during each pass
             self._update_screen()
-
 
     def _check_events(self):
         """Respond to user input """
@@ -37,7 +35,6 @@ class RobotGame:
                 elif event.type == pygame.KEYUP:
                     self._check_keyup_events((event))
                 
-
     def _check_keydown_events(self, event):
         """Respods to a keypress"""
         if event.key == pygame.K_RIGHT:
@@ -51,7 +48,6 @@ class RobotGame:
         if event.key == pygame.K_q:
                 sys.exit()
 
-    
     def _check_keyup_events(self, event):
         """Respods to a releases"""
         if event.key == pygame.K_RIGHT:
