@@ -22,8 +22,10 @@ class RobotGame:
         while True:
             #Watch for user input
             self._check_events()
-            #Check for update to the robot postion
+            #Check for update to the robot position
             self.robot.update()
+            #Check for update to the enemy's position
+            self.enemy.update(self.robot.x, self.robot.y)
             #Redraw the screen during each pass
             self._update_screen()
 
@@ -63,6 +65,7 @@ class RobotGame:
 
     def _update_screen(self):
         """Redraw the screen during each pass"""
+
         self.screen.fill(self.settings.bg_color)
         #load robot
         self.robot.blitme()

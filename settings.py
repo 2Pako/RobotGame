@@ -10,5 +10,7 @@ class Settings:
         self.bg_color = (80,80,80)
         #ship settings
         self.robot_speed = .5
+        # the bigger the slower the enemy moves
+        self.enemy_speed = 10
 
 
