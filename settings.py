@@ -8,9 +8,10 @@ class Settings:
         self.screen_width = 1200
         self.screen_height = 800
         self.bg_color = (80,80,80)
+        self.frame_rate = 60
         #ship settings
-        self.robot_speed = .5
+        self.robot_speed = 5
         # the bigger the slower the enemy moves
-        self.enemy_speed = 10
+        self.enemy_speed = 2
 
 

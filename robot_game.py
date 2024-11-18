@@ -16,6 +16,7 @@ class RobotGame:
         #instance of Robot
         self.robot = Robot(self)
         self.enemy = BadRobot(self)
+        self.clock = pygame.time.Clock()
 
     def run_game(self):
         """Start the main loop or the game"""
@@ -27,6 +28,7 @@ class RobotGame:
             #Check for update to the enemy's position
             self.enemy.update(self.robot.x, self.robot.y)
             #Redraw the screen during each pass
+            self.clock.tick(self.settings.frame_rate)    
             self._update_screen()
 
     def _check_events(self):

@@ -30,18 +30,40 @@ class BadRobot:
     def _check_direction(self, player_x, player_y):
         """Check the direction the enemy is moving.
             Take the player location and make enemy move towards"""
+        vector = pygame.math.Vector2
         #current location
         x0 = self.x
         y0 = self.y
-        #step = (new - old)/speed
-        step_x = (player_x - x0)/self.settings.enemy_speed 
-        step_y = (player_y-y0)/self.settings.enemy_speed
-        self.x += step_x
-        self.y += step_y
-
-        return [step_x,step_y]
+        #need direction vector and normalize. 
+        delta = vector(player_x - x0, player_y - y0).normalize()
+        #Adjust for speed
+        movement = delta * self.settings.enemy_speed
+        #change image based on movement
+        stepX = movement[0]
+        stepY = movement[1]
+        print(stepX, stepY)
+        if stepX > 0 and stepY > 0:
+            self.image = pygame.transform.rotate(pygame.image.load("images/Robot.png"), -135)
+        if stepX < 0 and stepY > 0:
+            self.image = pygame.transform.rotate(pygame.image.load("images/Robot.png"), 135)
+        if stepX < 0 and stepY < 0:
+            self.image = pygame.transform.rotate(pygame.image.load("images/Robot.png"), 45)
+        if stepX > 0 and stepY < 0:
+            self.image = pygame.transform.rotate(pygame.image.load("images/Robot.png"), -45)
+        if stepX == 0 and stepY == 0:
+            self.image = pygame.transform.rotate(pygame.image.load("images/Robot.png"), 0)
+        if stepX == 0 and stepY > 0:
+            self.image = pygame.transform.rotate(pygame.image.load("images/Robot.png"), 0)
+        if stepX == 0 and stepY < 0:
+            self.image = pygame.transform.rotate(pygame.image.load("images/Robot.png"), 180)
+        if stepX > 0 and stepY == 0:
+            self.image = pygame.transform.rotate(pygame.image.load("images/Robot.png"), 90)
+        if stepX < 0 and stepY == 0:
+            self.image = pygame.transform.rotate(pygame.image.load("images/Robot.png"), 270)
+        #move x and y
+        self.x += stepX
+        self.y += stepY
  
-    
     def blitme(self):
         """Draw the ship at the center of the location"""
         self.screen.blit(self.image, self.rect)
